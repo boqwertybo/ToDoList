@@ -8,16 +8,25 @@
 
 import UIKit
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: UITableViewController, ViewControllerDelegate {
+    
+    func filltheCell(info: String) {
+        textTask = info
+        print(textTask)
+        addTextTask()
+    }
+    
 
     @IBAction func addTaskButton(_ sender: Any) {
         
         let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "noteVC") as! ViewController
         self.present(nextViewController, animated:true, completion:nil)
+        nextViewController.delegate = self
        
     }
     
-    var anyArray = ["1", "2", "3"]
+    var textTask : String = ""
+    var anyArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,31 +62,32 @@ class MainTableViewController: UITableViewController {
     
     public func addTextTask(){
         print("press button add")
-               anyArray.append("press button")
+               anyArray.append(textTask)
                let indexPathNewRow = IndexPath(row: anyArray.count - 1, section: 0)
                tableView.insertRows(at: [indexPathNewRow], with: .automatic)
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            anyArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

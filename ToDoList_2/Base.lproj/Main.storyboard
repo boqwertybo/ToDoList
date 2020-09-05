@@ -23,17 +23,39 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lV0-iH-hQN">
-                                            <rect key="frame" x="20" y="20" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lV0-iH-hQN">
+                                            <rect key="frame" x="20" y="20" width="0.0" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4I-0o-gvr">
+                                            <rect key="frame" x="383.5" y="19" width="22.5" height="22"/>
+                                            <state key="normal" image="checkmark.seal" catalog="system"/>
+                                            <connections>
+                                                <action selector="actionSealCheckmarkButton:" destination="CU8-4X-j4N" eventType="touchUpInside" id="Ttn-H8-ud7"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rP-7e-bS2">
+                                            <rect key="frame" x="383.5" y="19" width="22.5" height="22"/>
+                                            <state key="normal" image="checkmark.seal.fill" catalog="system"/>
+                                            <connections>
+                                                <action selector="actionFillCheckmarkButton:" destination="CU8-4X-j4N" eventType="touchUpInside" id="ubK-2Y-0sr"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="4rP-7e-bS2" secondAttribute="trailing" constant="8" id="AzD-vg-oaU"/>
+                                        <constraint firstItem="M4I-0o-gvr" firstAttribute="centerY" secondItem="D5P-x2-Ip7" secondAttribute="centerY" id="Me6-4P-7PQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="M4I-0o-gvr" secondAttribute="trailing" constant="8" id="kvL-Aw-lcw"/>
+                                        <constraint firstItem="4rP-7e-bS2" firstAttribute="centerY" secondItem="D5P-x2-Ip7" secondAttribute="centerY" id="zRy-F0-1iI"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="fillChechmarkButton" destination="4rP-7e-bS2" id="8iy-bX-JWs"/>
                                     <outlet property="nameTaskLabel" destination="lV0-iH-hQN" id="6nh-vj-8dX"/>
+                                    <outlet property="sealChecmarkButton" destination="M4I-0o-gvr" id="55F-9A-o3X"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -69,7 +91,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Новая заметка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ng4-DA-lTq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Новая заметка" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ng4-DA-lTq">
                                 <rect key="frame" x="147.5" y="98" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -89,7 +111,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NBo-R3-oOO">
                                 <rect key="frame" x="57" y="185" width="300" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="4sD-Vi-oqG"/>
+                                    <constraint firstAttribute="width" constant="300" id="4sD-Vi-oqG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -106,6 +128,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="58Y-f8-BKm"/>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="NBo-R3-oOO" id="fHX-uO-wmH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8y-SV-CMs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,5 +157,7 @@
     </scenes>
     <resources>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
+        <image name="checkmark.seal" catalog="system" width="128" height="122"/>
+        <image name="checkmark.seal.fill" catalog="system" width="128" height="122"/>
     </resources>
 </document>
